@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartUp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/mainLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+    <LinearLayout
+        android:id="@+id/linearlayout_sectionOne"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:gravity="center">
+        
+        <ImageView
+            android:id="@+id/illustration"
+            android:layout_width="320dp"
+            android:layout_height="214dp"
+            android:src="@drawable/illustration" />
+
+
+        
+     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/startUi"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:background="@drawable/bottom_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/subTxt"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="38dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Get involved with people and events around you"
+                android:textColor="@color/white"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,UnusedAttribute" />
+
+            <Button
+                android:id="@+id/signUp"
+                android:layout_width="320dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="35dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Sign in"
+                android:textColor="@color/black"
+                android:textFontWeight="600"
+                android:textSize="16sp"
+                app:cornerRadius="10dp"
+                tools:ignore="HardcodedText, UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/createAccountTxt"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="38dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Or Create Account"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,UnusedAttribute" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
