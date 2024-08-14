@@ -69,20 +69,47 @@
         android:layout_height="match_parent"
         android:background="@color/blue"
         android:gravity="center_horizontal"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/signUi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
       <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/inputEmail"
+
           android:layout_width="340dp"
           android:layout_height="60dp"
           android:layout_marginLeft="32dp"
           android:layout_marginTop="20dp"
+          android:layout_marginRight="32dp"
+          app:boxBackgroundMode="outline"
+          app:boxCornerRadiusBottomEnd="10dp"
+          app:boxCornerRadiusBottomStart="10dp"
+          app:boxCornerRadiusTopEnd="10dp"
+          app:boxCornerRadiusTopStart="10dp"
+          app:boxStrokeColor="@color/white"
+          app:hintTextColor="@color/white"
+
+          >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            app:textInputLayoutFocusedRectEnabled="true"
+            tools:ignore="HardcodedText" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/inputPassword"
+          android:layout_width="340dp"
+          android:layout_height="60dp"
+          android:layout_marginLeft="32dp"
+          android:layout_marginTop="30dp"
           android:layout_marginRight="32dp"
           app:boxBackgroundMode="outline"
           app:boxCornerRadiusBottomEnd="10dp"
@@ -97,11 +124,74 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_regular"
-            android:hint="Email"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:textColor="@color/white"
             app:textInputLayoutFocusedRectEnabled="true"
             tools:ignore="HardcodedText" />
       </com.google.android.material.textfield.TextInputLayout>
+      <LinearLayout
+          android:id="@+id/linearLayout_names"
+          android:layout_width="340dp"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:gravity="center_horizontal"
+          android:layout_marginTop="30dp"
+          >
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputFirstname"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextColor="@color/white"
+            >
+
+          <com.google.android.material.textfield.TextInputEditText
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fontFamily="@font/poppins_regular"
+              android:hint="First name"
+              android:inputType="text"
+              android:textColor="@color/white"
+              app:textInputLayoutFocusedRectEnabled="true"
+              tools:ignore="HardcodedText" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLastname"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/white"
+            app:hintTextColor="@color/white"
+            >
+
+          <com.google.android.material.textfield.TextInputEditText
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fontFamily="@font/poppins_regular"
+              android:hint="Last name"
+              android:inputType="text"
+              android:textColor="@color/white"
+              app:textInputLayoutFocusedRectEnabled="true"
+              tools:ignore="HardcodedText" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+      </LinearLayout>
+
+
     </LinearLayout>
 
 
