@@ -63,8 +63,8 @@
                 tools:ignore="HardcodedText,UnusedAttribute" />
 
             <Button
-                android:id="@+id/signUp"
-                android:layout_width="320dp"
+                android:id="@+id/signIn"
+                android:layout_width="340dp"
                 android:layout_height="60dp"
                 android:layout_marginBottom="35dp"
                 android:backgroundTint="@color/white"
@@ -77,12 +77,12 @@
                 tools:ignore="HardcodedText, UnusedAttribute" />
 
             <TextView
-                android:id="@+id/createAccountTxt"
+                android:id="@+id/alreadyAccountTxt"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="38dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Or Create Account"
+                android:text="Already have an  account?"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textFontWeight="500"
