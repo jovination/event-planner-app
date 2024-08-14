@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class SignUp extends AppCompatActivity {
     TextView alreadyHaveAcc;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,8 @@ public class SignUp extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 }
 

@@ -122,13 +122,13 @@
           >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawableEnd="@drawable/ic_visibility_icon"
             android:fontFamily="@font/poppins_regular"
             android:hint="Password"
             android:textSize="16sp"
-
             android:inputType="textPassword"
             android:textColor="@color/white"
             app:textInputLayoutFocusedRectEnabled="true"

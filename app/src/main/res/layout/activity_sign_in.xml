@@ -128,7 +128,6 @@
                     android:drawableEnd="@drawable/ic_visibility_icon"
                     android:fontFamily="@font/poppins_regular"
                     android:hint="Password"
-
                     android:inputType="textPassword"
                     android:textColor="@color/white"
                     android:textSize="16sp"
