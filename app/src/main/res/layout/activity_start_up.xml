@@ -77,12 +77,12 @@
                 tools:ignore="HardcodedText, UnusedAttribute" />
 
             <TextView
-                android:id="@+id/alreadyAccountTxt"
+                android:id="@+id/createAccount"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="38dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Already have an  account?"
+                android:text="Or Create Account"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textFontWeight="500"
