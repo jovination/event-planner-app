@@ -24,7 +24,7 @@
     <LinearLayout
         android:id="@+id/signUi"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="280dp"
         android:background="@drawable/top_background"
         android:orientation="vertical"
         android:padding="20dp"

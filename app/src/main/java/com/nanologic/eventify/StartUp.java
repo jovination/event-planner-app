@@ -38,6 +38,8 @@ public class StartUp extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(StartUp.this, SignUp.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
 
             }
         });
