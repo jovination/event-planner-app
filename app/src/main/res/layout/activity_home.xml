@@ -8,32 +8,40 @@
     android:background="@color/white"
     tools:context=".Home">
 
-     <LinearLayout
-         android:id="@+id/topProfileLayout"
-         android:orientation="horizontal"
-         android:layout_width="match_parent"
-         android:layout_height="80dp"
-         android:gravity="center"
-         android:paddingStart="20dp"
-         android:paddingEnd="20dp"
-         tools:ignore="MissingConstraints">
-         <ImageView
-             android:id="@+id/profileID"
-             android:layout_width="45dp"
-             android:layout_height="45dp"
-             android:background="#CACACC" />
+    <LinearLayout
+        android:id="@+id/topProfileLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        tools:ignore="MissingConstraints">
 
+        <ImageView
+            android:id="@+id/profileID"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:contentDescription="profilePicture"
+            android:scaleType="centerCrop"
+            android:background="@drawable/profile_id"
+            android:src="@drawable/icon"
+            android:clipToOutline="true"
+            tools:ignore="HardcodedText" />
 
-         <ImageView
-             android:id="@+id/notificationId"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:src="@drawable/notify"
-             />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-         
-     </LinearLayout>
+        <ImageView
+            android:id="@+id/notificationId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notify" />
+    </LinearLayout>
     <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
