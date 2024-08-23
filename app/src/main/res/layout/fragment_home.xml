@@ -3,12 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+    <LinearLayout
+        android:id="@+id/homeUiContainer"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            tools:ignore="UselessParent">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:iss_auto_cycle="true"
+                app:iss_delay="0"
+                app:iss_period="3000"
+                app:iss_error_image="@color/grey"
+                app:iss_corner_radius="70"/>
+
+            <TextView
+                android:id="@+id/upcoming_events_text"
+                android:fontFamily="@font/poppins_bold"
+                android:textFontWeight="800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming\nEvents."
+                android:textColor="@android:color/white"
+                android:textSize="32sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                tools:ignore="HardcodedText" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
 
 </FrameLayout>
