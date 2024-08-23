@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
         ImageSlider imageSlider = view.findViewById(R.id.slider);
 
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable.upcoming, ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.event0, ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.event1, ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.event2, ScaleTypes.CENTER_CROP));
         slideModels.add(new SlideModel(R.drawable.event3, ScaleTypes.CENTER_CROP));

@@ -27,6 +27,7 @@
                 android:layout_height="match_parent"
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"
+                android:background="@drawable/image_slider"
                 app:iss_period="3000"
                 app:iss_error_image="@color/grey"
                 app:iss_corner_radius="70"/>
