@@ -7,8 +7,8 @@
     tools:context=".HomeFragment"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:paddingStart="20dp"
-    android:paddingEnd="20dp">
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
     <LinearLayout
         android:id="@+id/homeUiContainer"
         android:orientation="vertical"
@@ -18,7 +18,7 @@
         <FrameLayout
             android:id="@+id/frame_top_ui"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
+            android:layout_height="200dp"
             tools:ignore="UselessParent">
 
             <com.denzcoskun.imageslider.ImageSlider
@@ -30,7 +30,8 @@
                 android:background="@drawable/image_slider"
                 app:iss_period="3000"
                 app:iss_error_image="@color/grey"
-                app:iss_corner_radius="70"/>
+                app:iss_corner_radius="70"
+                />
 
             <TextView
                 android:id="@+id/upcoming_events_text"
@@ -45,6 +46,255 @@
                 android:layout_marginStart="20dp"
                 tools:ignore="HardcodedText" />
         </FrameLayout>
+        <LinearLayout
+            android:id="@+id/belowContainer"
+            app:layout_constraintTop_toBottomOf ="@id/frame_top_ui"
+            app:layout_constraintBottom_toTopOf ="@id/homeUiContainer"            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            >
+            
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_upcoming"
+                    android:layout_width="175dp"
+                    android:layout_height="140dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="4dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <ImageView
+                            android:id="@+id/image_upcoming"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/event0"
+                            tools:ignore="ContentDescription"
+                            app:cornerRadius="30dp"
+                            />
+                        <TextView
+                            android:id="@+id/event_count_upcoming"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/circle_background"
+                            android:gravity="center"
+                            android:text="10"
+                            android:textColor="@color/blue"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="8dp"
+                            android:layout_alignTop="@id/image_upcoming"/>
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/title_upcoming"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Upcoming"
+                        android:textSize="12sp"
+                        android:textFontWeight="800"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_going"
+                        android:layout_width="175dp"
+                        android:layout_height="140dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="4dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <ImageView
+                                android:id="@+id/image_ongoing"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/event1"
+                                tools:ignore="ContentDescription"
+                                app:cornerRadius="30dp"
+                                />
+                            <TextView
+                                android:id="@+id/event_count_ongoing"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/circle_background"
+                                android:gravity="center"
+                                android:text="9"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentEnd="true"
+                                android:layout_margin="8dp"
+                                android:layout_alignTop="@id/image_ongoing"/>
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/title_ongoing"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Ongoing"
+                        android:textSize="12sp"
+                        android:textFontWeight="800"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_reserved"
+                        android:layout_width="175dp"
+                        android:layout_height="140dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="4dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <ImageView
+                                android:id="@+id/image_reserved"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/event2"
+                                tools:ignore="ContentDescription"
+                                app:cornerRadius="30dp"
+                                />
+                            <TextView
+                                android:id="@+id/event_count_reserved"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/circle_background"
+                                android:gravity="center"
+                                android:text="5"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentEnd="true"
+                                android:layout_margin="8dp"
+                                android:layout_alignTop="@id/image_reserved"/>
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/title_reserved"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Reserved"
+                        android:textSize="12sp"
+                        android:textFontWeight="800"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_created"
+                        android:layout_width="175dp"
+                        android:layout_height="140dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="4dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <ImageView
+                                android:id="@+id/image_created"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/event3"
+                                tools:ignore="ContentDescription"
+                                app:cornerRadius="30dp"
+                                />
+                            <TextView
+                                android:id="@+id/event_count_created"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/circle_background"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/blue"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentEnd="true"
+                                android:layout_margin="8dp"
+                                android:layout_alignTop="@id/image_created"/>
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/title_created"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:paddingTop="5dp"
+                        android:text="Created"
+                        android:textSize="12sp"
+                        android:textFontWeight="800"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+            </GridLayout>
+            
+        </LinearLayout>
 
 
     </LinearLayout>
