@@ -56,6 +56,7 @@
             >
             
             <GridLayout
+                android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
@@ -293,7 +294,21 @@
                 </LinearLayout>
 
             </GridLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/createEvent"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/create_event_background"
+
+                >
             
+        </LinearLayout>
+        
+
+
         </LinearLayout>
 
 
