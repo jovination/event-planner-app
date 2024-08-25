@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="8dp"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp">
     <LinearLayout
@@ -18,7 +18,7 @@
         <FrameLayout
             android:id="@+id/frame_top_ui"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             tools:ignore="UselessParent">
 
             <com.denzcoskun.imageslider.ImageSlider
@@ -44,17 +44,18 @@
                 android:textSize="32sp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText,UnusedAttribute" />
         </FrameLayout>
         <LinearLayout
             android:id="@+id/belowContainer"
             app:layout_constraintTop_toBottomOf ="@id/frame_top_ui"
-            app:layout_constraintBottom_toTopOf ="@id/homeUiContainer"            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf ="@id/homeUiContainer"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             >
-            
+
             <GridLayout
                 android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
@@ -117,7 +118,8 @@
                         android:textSize="12sp"
                         android:textFontWeight="800"
                         android:textColor="@android:color/black"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        tools:ignore="HardcodedText,UnusedAttribute" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -126,7 +128,7 @@
                     android:layout_marginStart="20dp"
                     >
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_going"
+                        android:id="@+id/card_ongoing"
                         android:layout_width="175dp"
                         android:layout_height="140dp"
                         android:layout_columnWeight="1"
@@ -297,16 +299,53 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:id="@+id/createEvent"
+                android:id="@+id/createEventContainer"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="6dp"
+                android:paddingStart="16dp"
                 android:background="@drawable/create_event_background"
-
                 >
-            
-        </LinearLayout>
-        
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    tools:ignore="UselessParent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Create New event"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_height="18dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Add and share your event"
+                        android:textSize="14sp"
+                        android:textColor="#6D6767"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/addEvent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle_add"
+                    android:layout_marginStart="90dp"
+                    android:src="@drawable/add"
+                    android:padding="10dp"
+                    android:layout_gravity="center_vertical"
+
+                    />
+
+            </LinearLayout>
+
 
 
         </LinearLayout>

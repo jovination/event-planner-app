@@ -60,6 +60,7 @@ public class Home extends AppCompatActivity {
              }
          });
 
+
          replaceFragment(new HomeFragment(), true);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -77,6 +78,7 @@ public class Home extends AppCompatActivity {
     private void replaceFragment(Fragment fragment, boolean isAppInitialized) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
         if (isAppInitialized){
             fragmentTransaction.add(R.id.frame_layout, fragment);
         } else{
