@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment"
-    android:paddingTop="4dp"
-    android:paddingBottom="8dp"
+     android:paddingBottom="8dp"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp">
     <LinearLayout
@@ -114,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:paddingTop="5dp"
-                        android:text="Upcoming"
+                        android:text="Upcoming Event"
                         android:textSize="12sp"
                         android:textFontWeight="800"
                         android:textColor="@android:color/black"
@@ -172,7 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:paddingTop="5dp"
-                        android:text="Ongoing"
+                        android:text="Ongoing Event"
                         android:textSize="12sp"
                         android:textFontWeight="800"
                         android:textColor="@android:color/black"
@@ -230,7 +229,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:paddingTop="5dp"
-                        android:text="Reserved"
+                        android:text="Reserved Event"
                         android:textSize="12sp"
                         android:textFontWeight="800"
                         android:textColor="@android:color/black"
@@ -276,7 +275,8 @@
                                 android:textStyle="bold"
                                 android:layout_alignParentEnd="true"
                                 android:layout_margin="8dp"
-                                android:layout_alignTop="@id/image_created"/>
+                                android:layout_alignTop="@id/image_created"
+                                tools:ignore="HardcodedText" />
                         </RelativeLayout>
 
 
@@ -288,11 +288,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:paddingTop="5dp"
-                        android:text="Created"
+                        android:text="Created Event"
                         android:textSize="12sp"
                         android:textFontWeight="800"
                         android:textColor="@android:color/black"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
 
             </GridLayout>
