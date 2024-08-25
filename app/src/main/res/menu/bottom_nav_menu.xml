@@ -19,10 +19,7 @@
         tools:ignore="HardcodedText"
         />
 
-    <item android:id="@+id/fab"
-        android:title="add"
-        android:enabled="false"
-        tools:ignore="HardcodedText" />
+
 
     <item
         android:id="@+id/navBookmark"

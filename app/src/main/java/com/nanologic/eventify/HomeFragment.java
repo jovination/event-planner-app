@@ -39,12 +39,12 @@ public class HomeFragment extends Fragment {
         CardView cardReserved = view.findViewById(R.id.card_reserved);
         cardReserved.setOnClickListener(v -> {
             // Replace fragment within the shared FrameLayout
-            replaceFragment(new UpcomingFragment());
+            replaceFragment(new ReservedFragment());
         });
         CardView cardCreated = view.findViewById(R.id.card_created);
         cardCreated.setOnClickListener(v -> {
             // Replace fragment within the shared FrameLayout
-            replaceFragment(new UpcomingFragment());
+            replaceFragment(new CreatedFragment());
         });
 
 
