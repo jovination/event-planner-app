@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -47,6 +48,11 @@ public class HomeFragment extends Fragment {
             replaceFragment(new CreatedFragment());
         });
 
+        ImageView eventForm = view.findViewById(R.id.addEvent);
+        eventForm.setOnClickListener(v ->{
+            // Replace fragment within the shared FrameLayout
+            replaceFragment(new eventFormFragment());
+        });
 
         ImageSlider imageSlider = view.findViewById(R.id.slider);
         List<SlideModel> slideModels = new ArrayList<>();

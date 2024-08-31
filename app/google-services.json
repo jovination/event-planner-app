@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "267655811959",
+    "project_id": "eventify-c9c1f",
+    "storage_bucket": "eventify-c9c1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267655811959:android:5190bf96c826b2b3668772",
+        "android_client_info": {
+          "package_name": "com.nanologic.eventify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7135RNjdhV1KHoCwOyI_nvFQYNWGMQpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
