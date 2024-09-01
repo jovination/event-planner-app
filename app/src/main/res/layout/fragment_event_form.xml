@@ -3,8 +3,203 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".eventFormFragment"
-    android:background="@color/black">
+    android:padding="20dp">
+    <LinearLayout
+        android:id="@+id/eventFormUI"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/form_ui_background"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_bold"
+            android:textColor="@color/blue"
+            android:textSize="25sp"
+
+            android:text="Create Event"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            />
+        <EditText
+            android:id="@+id/eventNameId"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:fontFamily="@font/poppins_regular"
+            android:background="@drawable/edit_form_text"
+            android:hint="Event name"
+            android:textSize="14sp"
+            android:textFontWeight="600"
+            android:paddingStart="20dp"
+            android:textColor="#000"
+            android:textColorHint="#545454"
+            android:layout_marginBottom="25dp"
+
+            tools:ignore="RtlSymmetry" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            >
+
+            <EditText
+                android:id="@+id/locationNameId"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:hint="Location"
+                android:fontFamily="@font/poppins_regular"
+                android:background="@drawable/edit_form_text"
+                android:paddingStart="20dp"
+                android:textSize="14sp"
+                android:textFontWeight="600"
+                android:textColor="#000"
+                android:textColorHint="#545454"
+                android:layout_marginBottom="10dp"
+                tools:ignore="HardcodedText,InvalidId" />
+
+            <ImageView
+                android:id="@+id/passwordToggle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="18dp"
+                android:src="@drawable/location" />
+
+        </RelativeLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:layout_gravity="center">
+
+            <!-- Date Picker Layout -->
+            <RelativeLayout
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"> <!-- Gap between Date and Time -->
+
+                <EditText
+                    android:id="@+id/DateNameId"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:hint="Date"
+                    android:fontFamily="@font/poppins_regular"
+                    android:background="@drawable/edit_form_text"
+                    android:paddingStart="20dp"
+                    android:textSize="14sp"
+                    android:textFontWeight="600"
+                    android:textColor="#000"
+                    android:textColorHint="#545454"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="HardcodedText,InvalidId" />
+
+                <ImageView
+                    android:id="@+id/calenderIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="18dp"
+                    android:src="@drawable/calender" />
+            </RelativeLayout>
+
+            <!-- Time Picker Layout -->
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/timeNameId"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:hint="Time"
+                    android:fontFamily="@font/poppins_regular"
+                    android:background="@drawable/edit_form_text"
+                    android:paddingStart="20dp"
+                    android:textSize="14sp"
+                    android:textFontWeight="600"
+                    android:textColor="#000"
+                    android:textColorHint="#545454"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="HardcodedText,InvalidId" />
+
+                <ImageView
+                    android:id="@+id/timeIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="18dp"
+                    android:src="@drawable/clock" />
+            </RelativeLayout>
+
+        </GridLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            >
+
+            <EditText
+                android:id="@+id/numberOfSeatId"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:hint="Set Number of Seats "
+                android:fontFamily="@font/poppins_regular"
+                android:background="@drawable/edit_form_text"
+                android:paddingStart="20dp"
+                android:textSize="14sp"
+                android:textFontWeight="600"
+                android:textColor="#000"
+                android:textColorHint="#545454"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"
+                tools:ignore="HardcodedText,InvalidId" />
+
+            <ImageView
+                android:id="@+id/Seats"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="18dp"
+                android:src="@drawable/seats" />
+
+        </RelativeLayout>
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            app:cornerRadius="10dp"
+            tools:ignore="HardcodedText, UnusedAttribute" />
+
+
+
+
+
+    </LinearLayout>
 
 
 </FrameLayout>
