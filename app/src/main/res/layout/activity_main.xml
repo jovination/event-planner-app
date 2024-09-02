@@ -14,14 +14,15 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textViewLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/dm_sans_regular"
+        android:fontFamily="@font/fira_sans_semibold_italic"
         android:text="Eventify"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="50sp"
-        android:textStyle="bold"
+        android:textSize="70sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
