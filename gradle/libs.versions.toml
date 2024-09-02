@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.1"
+cardviewVersion = "1.0.0"
 googleServices = "4.4.2"
 imageslideshow = "0.1.2"
 junit = "4.13.2"
@@ -13,6 +14,7 @@ googleGmsGoogleServices = "4.4.2"
 firebaseAuth = "23.0.0"
 
 [libraries]
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardviewVersion" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 imageslideshow = { module = "com.github.denzcoskun:ImageSlideshow", version.ref = "imageslideshow" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

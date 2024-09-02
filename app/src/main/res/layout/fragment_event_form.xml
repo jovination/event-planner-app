@@ -22,27 +22,29 @@
 
             android:text="Create Event"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             />
+
         <EditText
             android:id="@+id/eventNameId"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:fontFamily="@font/poppins_regular"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/edit_form_text"
+            android:fontFamily="@font/poppins_regular"
             android:hint="Event name"
-            android:textSize="14sp"
-            android:textFontWeight="600"
             android:paddingStart="20dp"
             android:textColor="#000"
             android:textColorHint="#545454"
-            android:layout_marginBottom="25dp"
+            android:textFontWeight="600"
+            android:textSize="14sp"
 
             tools:ignore="RtlSymmetry" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             >
 
             <EditText
@@ -62,13 +64,14 @@
 
             <ImageView
                 android:id="@+id/passwordToggle"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignBottom="@+id/locationNameId"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="14dp"
                 android:src="@drawable/location" />
 
         </RelativeLayout>
@@ -90,15 +93,15 @@
                     android:id="@+id/DateNameId"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
-                    android:hint="Date"
-                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/edit_form_text"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Date"
                     android:paddingStart="20dp"
-                    android:textSize="14sp"
-                    android:textFontWeight="600"
                     android:textColor="#000"
                     android:textColorHint="#545454"
-                    android:layout_marginBottom="10dp"
+                    android:textFontWeight="600"
+                    android:textSize="14sp"
                     tools:ignore="HardcodedText,InvalidId" />
 
                 <ImageView
@@ -122,26 +125,27 @@
                     android:id="@+id/timeNameId"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
-                    android:hint="Time"
-                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/edit_form_text"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Time"
                     android:paddingStart="20dp"
-                    android:textSize="14sp"
-                    android:textFontWeight="600"
                     android:textColor="#000"
                     android:textColorHint="#545454"
-                    android:layout_marginBottom="10dp"
+                    android:textFontWeight="600"
+                    android:textSize="14sp"
                     tools:ignore="HardcodedText,InvalidId" />
 
                 <ImageView
                     android:id="@+id/timeIcon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignBottom="@+id/timeNameId"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="18dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="14dp"
                     android:src="@drawable/clock" />
             </RelativeLayout>
 
@@ -150,37 +154,95 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             >
 
             <EditText
                 android:id="@+id/numberOfSeatId"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:hint="Set Number of Seats "
-                android:fontFamily="@font/poppins_regular"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/edit_form_text"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Set Number of Seats "
+                android:inputType="number"
                 android:paddingStart="20dp"
-                android:textSize="14sp"
-                android:textFontWeight="600"
                 android:textColor="#000"
                 android:textColorHint="#545454"
-                android:layout_marginBottom="10dp"
-                android:inputType="number"
+                android:textFontWeight="600"
+                android:textSize="14sp"
                 tools:ignore="HardcodedText,InvalidId" />
 
             <ImageView
                 android:id="@+id/Seats"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignBottom="@+id/numberOfSeatId"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="14dp"
                 android:src="@drawable/seats" />
 
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center_horizontal">
+
+            <!-- CardView to display the uploaded image -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_uploaded"
+                android:layout_width="120dp"
+                android:layout_height="72dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="15dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/uploadedImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@color/blue" />
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/uploadButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="0dp"
+                android:layout_toEndOf="@id/card_uploaded"
+                android:backgroundTint="#D9D9D9"
+                android:drawableEnd="@drawable/upload_icon"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="20dp"
+                android:text="Upload file"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textFontWeight="600"
+                android:textSize="16sp"
+                app:cornerRadius="15dp"
+                tools:ignore="HardcodedText,UnusedAttribute" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/uploadProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/uploadButton"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:indeterminate="true"
+                app:indicatorColor="@color/blue" />
+        </RelativeLayout>
+
+
         <Button
             android:id="@+id/submitBtn"
             android:layout_width="match_parent"
