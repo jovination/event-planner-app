@@ -15,6 +15,7 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+
 public class StartUp extends AppCompatActivity {
 
     TextView createAcc;

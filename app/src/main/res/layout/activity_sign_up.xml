@@ -79,7 +79,6 @@
         >
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/inputEmail"
           android:layout_width="340dp"
           android:layout_height="wrap_content"
           android:layout_marginLeft="32dp"
@@ -96,6 +95,7 @@
           >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_regular"
@@ -111,7 +111,6 @@
       </com.google.android.material.textfield.TextInputLayout>
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/inputPassword"
           android:layout_width="340dp"
           android:layout_height="wrap_content"
           android:layout_marginLeft="32dp"
@@ -128,7 +127,7 @@
           app:passwordToggleTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputPasswordEditText"
+            android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_regular"
@@ -150,7 +149,6 @@
           android:layout_marginTop="30dp"
           >
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputFirstname"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
@@ -163,6 +161,7 @@
             >
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/inputFirstname"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:fontFamily="@font/poppins_regular"
@@ -177,7 +176,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputLastname"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -191,6 +189,7 @@
             >
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/inputLastname"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:fontFamily="@font/poppins_regular"
@@ -241,5 +240,16 @@
 
 
   </LinearLayout>
+  <ProgressBar
+      android:id="@+id/progressBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      android:layout_centerInParent="true"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      style="?android:attr/progressBarStyleLarge" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
