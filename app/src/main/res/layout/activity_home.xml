@@ -36,7 +36,6 @@
                  android:id="@+id/ProfileName"
                  android:fontFamily="@font/poppins_regular"
                  android:textFontWeight="800"
-                 android:text="Peter Parker"
                  android:textSize="14sp"
                  android:textColor="@color/black"
                  android:layout_width="wrap_content"
@@ -45,7 +44,6 @@
                  android:gravity="center_vertical"
                  android:layout_marginStart="12dp"
                  android:paddingTop="8dp"
-
                  />
          </LinearLayout>
 

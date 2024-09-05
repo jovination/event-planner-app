@@ -19,11 +19,15 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignIn extends AppCompatActivity {
     private FirebaseAuth auth;
+    private FirebaseFirestore db;
+
     private TextInputEditText inputEmail, inputPassword;
     private Button signInBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class SignIn extends AppCompatActivity {
         });
 
         auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
 
 
         inputEmail = findViewById(R.id.inputEmail);
@@ -65,15 +71,32 @@ public class SignIn extends AppCompatActivity {
                         FirebaseUser user = auth.getCurrentUser();
                         if (user != null) {
                             Toast.makeText(SignIn.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
-                            // Navigate to Home activity
-                            Intent intent = new Intent(SignIn.this, Home.class);
-                            startActivity(intent);
-                            finish();
+
+                            String userId = user.getUid();  // Use this UID to get the data
+                            db.collection("users").document(userId).get()
+                                    .addOnSuccessListener(documentSnapshot -> {
+                                        if (documentSnapshot.exists()) {
+                                            String firstName = documentSnapshot.getString("firstName");
+                                            String lastName = documentSnapshot.getString("lastName");
+
+                                            // Navigate to Home activity and pass user data
+                                            Intent intent = new Intent(SignIn.this, Home.class);
+                                            intent.putExtra("ProfileName", firstName + " " + lastName);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(SignIn.this, "User data not found", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(SignIn.this, "Error retrieving user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    });
                         }
                     } else {
-                        // Sign in failed
                         Toast.makeText(SignIn.this, "Authentication Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
-}
+
+    }
+

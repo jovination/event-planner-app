@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.ViewOutlineProvider;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -38,6 +39,9 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
+        TextView profileNameTextView = findViewById(R.id.ProfileName);
+        String profileName = getIntent().getStringExtra("ProfileName");
+        profileNameTextView.setText(profileName);
 
 
          bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -70,6 +74,7 @@ public class Home extends AppCompatActivity {
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setItemActiveIndicatorColor(ColorStateList.valueOf(Color.TRANSPARENT));
+
         ImageView profileImageView = findViewById(R.id.profileID);
         profileImageView.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
         profileImageView.setClipToOutline(true);
