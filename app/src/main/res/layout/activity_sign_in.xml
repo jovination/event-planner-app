@@ -76,8 +76,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputEmail"
-
                 android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -94,6 +92,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/poppins_regular"
@@ -108,7 +107,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputPassword"
                 android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -128,9 +126,9 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
                     android:inputType="textPassword"
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"

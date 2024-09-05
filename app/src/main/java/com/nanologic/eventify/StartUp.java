@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 public class StartUp extends AppCompatActivity {
 
     TextView createAcc;
+    Button signIn;
     
 
 
@@ -34,14 +37,21 @@ public class StartUp extends AppCompatActivity {
             return insets;
         });
         createAcc = findViewById(R.id.createAccount);
+        signIn = findViewById(R.id.signIn);
         createAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StartUp.this, SignUp.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-
+            }
+        });
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StartUp.this, SignIn.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         

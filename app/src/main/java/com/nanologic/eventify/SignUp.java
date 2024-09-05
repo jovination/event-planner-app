@@ -34,6 +34,8 @@ public class SignUp extends AppCompatActivity {
     private TextView alreadyHaveAcc;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
+    private ProgressBar progressBar;
+
 
 
     @Override
@@ -48,7 +50,7 @@ public class SignUp extends AppCompatActivity {
         firstNameInput = findViewById(R.id.inputFirstname);
         lastNameInput = findViewById(R.id.inputLastname);
 
-
+        progressBar = findViewById(R.id.progressBar);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -89,11 +91,11 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
-    ProgressBar progressBar = findViewById(R.id.progressBar);
+
     private void signUpUser(String email, String password, String firstName, String lastName) {
-        progressBar.setVisibility(View.VISIBLE);
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
+                    progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         FirebaseUser user = auth.getCurrentUser();
                         if (user != null) {
@@ -122,6 +124,8 @@ public class SignUp extends AppCompatActivity {
                     } else {
                         // Sign-up failed
                         Toast.makeText(SignUp.this, "Sign Up Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+
                     }
                 });
     }
