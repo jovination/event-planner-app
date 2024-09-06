@@ -1,5 +1,6 @@
 package com.nanologic.eventify;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,6 +23,10 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,34 +36,56 @@ import java.util.Locale;
 
 public class eventFormFragment extends Fragment {
 
-    private EditText timeEditText;
-    private ImageView timeIcon;
+    private EditText timeEditText, eventName, location, date, startTime, endTime, numberOfSeats;
+    private ImageView startTimeIcon, endTimeIcon ;
     private ImageView uploadedImageView;
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final long MAX_FILE_SIZE = 4 * 1024 * 1024; // 4 MB
-    private Button uploadButton;
+    private Button uploadButton, submitButton;
     private ProgressBar uploadProgressBar;
     private CardView    cardUploaded;
 
+    private DatabaseReference databaseReference;
+    private StorageReference storageReference;
+
+    private Uri imageUri;
+    private Bitmap bitmap;
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_event_form, container, false);
 
-        // Find the EditText, ImageViews, and Button by their IDs
-        EditText editText = view.findViewById(R.id.DateNameId);
+
         ImageView calendarIcon = view.findViewById(R.id.calenderIcon);
         timeEditText = view.findViewById(R.id.timeNameId);
-        timeIcon = view.findViewById(R.id.timeIcon);
+        startTimeIcon = view.findViewById(R.id.startTimeIcon);
+        endTimeIcon = view.findViewById(R.id.EndTimeIcon);
         uploadedImageView = view.findViewById(R.id.uploadedImageView);
-        uploadButton = view.findViewById(R.id.uploadButton);
         uploadProgressBar = view.findViewById(R.id.uploadProgressBar);
         cardUploaded = view.findViewById(R.id.card_uploaded);
 
-        // Set click listener on the time icon
-        timeIcon.setOnClickListener(v -> showTimePicker());
+        eventName = view.findViewById(R.id.eventNameId);
+        location = view.findViewById(R.id.locationNameId);
+        date = view.findViewById(R.id.dateId);
+        numberOfSeats = view.findViewById(R.id.numberOfSeatId);
+        startTime = view.findViewById(R.id.startTime);
+        endTime = view.findViewById(R.id.endTime);
 
+
+        uploadButton = view.findViewById(R.id.uploadButton);
+        submitButton = view.findViewById(R.id.submitBtn);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Events");
+        storageReference = FirebaseStorage.getInstance().getReference("EventImages");
+
+
+
+        startTimeIcon.setOnClickListener(v -> showTimePicker());
+        endTimeIcon.setOnClickListener(v -> showTimePicker());
         // Set an onClickListener on the calendar icon
         calendarIcon.setOnClickListener(v -> {
             // Get the current date
@@ -74,7 +101,7 @@ public class eventFormFragment extends Fragment {
                         selectedDate.set(Calendar.MONTH, month);
                         selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
-                        editText.setText(dateFormat.format(selectedDate.getTime()));
+                        date.setText(dateFormat.format(selectedDate.getTime()));
                     },
                     calendar.get(Calendar.YEAR),
                     calendar.get(Calendar.MONTH),
@@ -145,9 +172,7 @@ public class eventFormFragment extends Fragment {
     }
 
     private void uploadImage(Uri imageUri) {
-        // Implement your image upload logic here.
 
-        // Once the upload is complete, hide the progress bar.
         uploadProgressBar.setVisibility(View.GONE);
         Toast.makeText(getContext(), "Upload complete", Toast.LENGTH_SHORT).show();
     }

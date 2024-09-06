@@ -4,6 +4,8 @@ bom = "VERSION"
 cardviewVersion = "1.0.0"
 converterGson = "2.9.0"
 firebaseBomVersion = "33.2.0"
+firebaseStorageVersion = "20.1.0"
+glide = "4.15.1"
 googleServices = "4.4.2"
 gson = "2.8.8"
 imageslideshow = "0.1.2"
@@ -24,7 +26,9 @@ firebaseFirestore = "25.1.0"
 [libraries]
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardviewVersion" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+google-firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebaseStorageVersion" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gotrue-kt = { module = "io.github.jan-tennert.supabase:gotrue-kt" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
