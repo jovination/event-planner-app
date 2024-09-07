@@ -173,7 +173,6 @@
                     android:id="@+id/EndTimeIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_alignBottom="@+id/timeNameId"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="14dp"
