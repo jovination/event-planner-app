@@ -3,21 +3,32 @@
     <string name="password" translatable="false">Password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="titleDescription1" translatable="false">
-        Organize Your Events Easily
+        Organize Your Events\nEasily
     </string>
     <string name="titleDescription2" translatable="false">
-        Effortless Event Creation
+        Effortless Event\n
+        Creation
     </string>
     <string name="titleDescription3" translatable="false">
-        Stay Connected with Ongoing Events
+        Stay Connected with\n
+        Ongoing Events
     </string>
     <string name="titleDescription4" translatable="false">
-        Reserve Your Spot
+        Reserve Your\n
+        Spot
     </string>
-    <string name="description1" translatable="false">Simplify your event planning with our intuitive interface. Create your events with just a few taps.</string>
-    <string name="description2" translatable="false">whether it’s a small gathering or a large conference. quickly set up events with customizable options</string>
-    <string name="description3" translatable="false">Never miss out! Browse ongoing events, join live sessions, and stay updated with real-time notifications.</string>
-    <string name="description4" translatable="false"> Secure your place in exciting events hosted by others. Browse available spots, reserve your chance, and join the community.</string>
+    <string name="description1" translatable="false">Simplify your event planning with our\n
+        intuitive interface. Create your events\n
+        with just a few taps.</string>
+    <string name="description2" translatable="false">whether it’s a small gathering or a large\n
+        conference. quickly set up events with\n
+        customizable options.</string>
+    <string name="description3" translatable="false">Never miss out! Browse ongoing events,\n
+        join live sessions, and stay updated with\n
+        real-time notifications.</string>
+    <string name="description4" translatable="false"> Secure your place in exciting events hosted\n
+        by others. Browse available spots, reserve\n
+        your chance, and join the community.</string>
 
 
 </resources>

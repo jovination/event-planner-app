@@ -69,6 +69,7 @@ public class SignUp extends AppCompatActivity {
                     return;
                 }
 
+                progressBar.setVisibility(View.VISIBLE);
                 signUpUser(email, password, firstName, lastName);
             }
         });
@@ -95,7 +96,6 @@ public class SignUp extends AppCompatActivity {
     private void signUpUser(String email, String password, String firstName, String lastName) {
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
-                    progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
                         FirebaseUser user = auth.getCurrentUser();
                         if (user != null) {
@@ -113,6 +113,7 @@ public class SignUp extends AppCompatActivity {
                                         // Success
                                         Toast.makeText(SignUp.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(SignUp.this, SignIn.class);
+                                        progressBar.setVisibility(View.GONE);
                                         startActivity(intent);
                                         finish();
                                     })

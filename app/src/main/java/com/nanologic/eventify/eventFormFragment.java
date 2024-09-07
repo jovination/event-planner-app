@@ -36,7 +36,7 @@ import java.util.Locale;
 
 public class eventFormFragment extends Fragment {
 
-    private EditText timeEditText, eventName, location, date, startTime, endTime, numberOfSeats;
+    private EditText eventName, location, date, startTime, endTime, numberOfSeats;
     private ImageView startTimeIcon, endTimeIcon ;
     private ImageView uploadedImageView;
     private static final int PICK_IMAGE_REQUEST = 1;
@@ -61,7 +61,6 @@ public class eventFormFragment extends Fragment {
 
 
         ImageView calendarIcon = view.findViewById(R.id.calenderIcon);
-        timeEditText = view.findViewById(R.id.timeNameId);
         startTimeIcon = view.findViewById(R.id.startTimeIcon);
         endTimeIcon = view.findViewById(R.id.EndTimeIcon);
         uploadedImageView = view.findViewById(R.id.uploadedImageView);
@@ -84,8 +83,9 @@ public class eventFormFragment extends Fragment {
 
 
 
-        startTimeIcon.setOnClickListener(v -> showTimePicker());
-        endTimeIcon.setOnClickListener(v -> showTimePicker());
+        startTimeIcon.setOnClickListener(v -> startTimePicker());
+        endTimeIcon.setOnClickListener(v -> endTimePicker());
+
         // Set an onClickListener on the calendar icon
         calendarIcon.setOnClickListener(v -> {
             // Get the current date
@@ -178,7 +178,7 @@ public class eventFormFragment extends Fragment {
     }
 
 
-    private void showTimePicker() {
+    private void startTimePicker() {
         FragmentManager fragmentManager = getChildFragmentManager();
         boolean isSystem24Hour = android.text.format.DateFormat.is24HourFormat(getContext());
 
@@ -193,9 +193,30 @@ public class eventFormFragment extends Fragment {
             int minute = picker.getMinute();
 
             String selectedTime = String.format("%02d:%02d", hour, minute);
-            timeEditText.setText(selectedTime);
+            startTime.setText(selectedTime);
         });
 
         picker.show(fragmentManager, "TIME_PICKER");
     }
+    private void endTimePicker() {
+        FragmentManager fragmentManager = getChildFragmentManager();
+        boolean isSystem24Hour = android.text.format.DateFormat.is24HourFormat(getContext());
+
+        MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder()
+                .setTimeFormat(isSystem24Hour ? TimeFormat.CLOCK_24H : TimeFormat.CLOCK_12H)
+                .setTitleText("Select Time");
+
+        MaterialTimePicker picker = builder.build();
+
+        picker.addOnPositiveButtonClickListener(dialog -> {
+            int hour = picker.getHour();
+            int minute = picker.getMinute();
+
+            String selectedTime = String.format("%02d:%02d", hour, minute);
+            endTime.setText(selectedTime);
+        });
+
+        picker.show(fragmentManager, "TIME_PICKER");
+    }
+
 }

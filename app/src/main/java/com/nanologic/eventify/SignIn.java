@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -25,6 +26,7 @@ public class SignIn extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
 
+    private ProgressBar progressBar;
     private TextInputEditText inputEmail, inputPassword;
     private Button signInBtn;
 
@@ -43,6 +45,7 @@ public class SignIn extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        progressBar = findViewById(R.id.progressBar);
 
 
         inputEmail = findViewById(R.id.inputEmail);
@@ -58,6 +61,7 @@ public class SignIn extends AppCompatActivity {
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(SignIn.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
                 } else {
+                    progressBar.setVisibility(View.VISIBLE);
                     signInUser(email, password);
                 }
             }
@@ -70,7 +74,6 @@ public class SignIn extends AppCompatActivity {
                         // Sign in success
                         FirebaseUser user = auth.getCurrentUser();
                         if (user != null) {
-                            Toast.makeText(SignIn.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
 
                             String userId = user.getUid();  // Use this UID to get the data
                             db.collection("users").document(userId).get()
@@ -82,6 +85,8 @@ public class SignIn extends AppCompatActivity {
                                             // Navigate to Home activity and pass user data
                                             Intent intent = new Intent(SignIn.this, Home.class);
                                             intent.putExtra("ProfileName", firstName + " " + lastName);
+                                            progressBar.setVisibility(View.GONE);
+                                            Toast.makeText(SignIn.this, "Sign In Successful", Toast.LENGTH_SHORT).show();
                                             startActivity(intent);
                                             finish();
                                         } else {
