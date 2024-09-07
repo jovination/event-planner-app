@@ -1,6 +1,23 @@
 <resources>
-    <string name="app_name">Eventify</string>
-    <string name="password">Password</string>
+    <string name="app_name" translatable="false">Eventify</string>
+    <string name="password" translatable="false">Password</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titleDescription1" translatable="false">
+        Organize Your Events Easily
+    </string>
+    <string name="titleDescription2" translatable="false">
+        Effortless Event Creation
+    </string>
+    <string name="titleDescription3" translatable="false">
+        Stay Connected with Ongoing Events
+    </string>
+    <string name="titleDescription4" translatable="false">
+        Reserve Your Spot
+    </string>
+    <string name="description1" translatable="false">Simplify your event planning with our intuitive interface. Create your events with just a few taps.</string>
+    <string name="description2" translatable="false">whether it’s a small gathering or a large conference. quickly set up events with customizable options</string>
+    <string name="description3" translatable="false">Never miss out! Browse ongoing events, join live sessions, and stay updated with real-time notifications.</string>
+    <string name="description4" translatable="false"> Secure your place in exciting events hosted by others. Browse available spots, reserve your chance, and join the community.</string>
+
+
 </resources>
