@@ -64,9 +64,11 @@
 
             <Button
                 android:id="@+id/signIn"
-                android:layout_width="340dp"
-                android:layout_height="62dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:layout_marginBottom="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Sign in"
