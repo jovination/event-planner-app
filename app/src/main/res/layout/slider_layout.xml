@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/titleImage"
-        android:layout_width="268dp"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:src="@drawable/illustration_01" />
     <TextView

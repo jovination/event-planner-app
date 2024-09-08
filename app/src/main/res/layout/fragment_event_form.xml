@@ -19,7 +19,6 @@
             android:fontFamily="@font/dm_sans_bold"
             android:textColor="@color/blue"
             android:textSize="25sp"
-
             android:text="Create Event"
             android:gravity="center"
             android:layout_marginBottom="10dp"
@@ -113,13 +112,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:columnCount="2"
-            android:rowCount="1"
             android:layout_gravity="center">
 
             <!-- Date Picker Layout -->
             <RelativeLayout
-                android:layout_width="155dp"
-                android:layout_height="wrap_content">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1">
 
                 <EditText
                     android:id="@+id/startTime"
@@ -149,8 +148,9 @@
 
             <!-- Time Picker Layout -->
             <RelativeLayout
-                android:layout_width="155dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
                 android:layout_marginStart="20dp"
                 >
 
@@ -263,15 +263,17 @@
                 app:cornerRadius="15dp"
                 tools:ignore="HardcodedText,UnusedAttribute" />
 
-            <com.google.android.material.progressindicator.LinearProgressIndicator
+            <ProgressBar
                 android:id="@+id/uploadProgressBar"
+                android:indeterminateTint="@color/blue"
+                android:progressTint="@color/blue"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/uploadButton"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
+                android:layout_marginTop="30dp"
                 android:indeterminate="true"
-                app:indicatorColor="@color/blue" />
+              />
         </RelativeLayout>
 
 
@@ -279,7 +281,7 @@
             android:id="@+id/submitBtn"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="30dp"
             android:backgroundTint="@color/blue"
             android:fontFamily="@font/poppins_regular"
             android:text="Submit"
