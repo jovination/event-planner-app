@@ -17,7 +17,7 @@
         <FrameLayout
             android:id="@+id/frame_top_ui"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="200dp"
             tools:ignore="UselessParent">
 
             <com.denzcoskun.imageslider.ImageSlider
@@ -29,7 +29,7 @@
                 android:background="@drawable/image_slider"
                 app:iss_period="3000"
                 app:iss_error_image="@color/grey"
-                app:iss_corner_radius="65"
+                app:iss_corner_radius="55"
                 />
 
             <TextView

@@ -106,7 +106,7 @@
             android:paddingBottom="15dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:textInputLayoutFocusedRectEnabled="true"
             tools:ignore="HardcodedText" />
       </com.google.android.material.textfield.TextInputLayout>
@@ -134,7 +134,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_regular"
             android:hint="Password"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:inputType="textPassword"
@@ -175,7 +175,7 @@
               android:layout_height="match_parent"
               android:fontFamily="@font/poppins_regular"
               android:hint="First name"
-              android:textSize="16sp"
+              android:textSize="15sp"
               android:paddingTop="15dp"
               android:paddingBottom="15dp"
               android:inputType="text"
@@ -204,7 +204,7 @@
               android:layout_height="match_parent"
               android:fontFamily="@font/poppins_regular"
               android:hint="Last name"
-              android:textSize="16sp"
+              android:textSize="15sp"
               android:paddingTop="15dp"
               android:paddingBottom="15dp"
               android:inputType="text"
@@ -247,7 +247,7 @@
             android:text="Sign Up"
             android:textColor="@color/black"
             android:textFontWeight="600"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:cornerRadius="10dp"
             tools:ignore="HardcodedText, UnusedAttribute" />
 
@@ -263,7 +263,7 @@
           android:textAlignment="center"
           android:textColor="@color/white"
           android:textFontWeight="500"
-          android:textSize="16sp"
+          android:textSize="15sp"
           tools:ignore="HardcodedText,UnusedAttribute" />
 
 

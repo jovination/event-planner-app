@@ -40,6 +40,7 @@ public class OnboardingScreen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(OnboardingScreen.this, StartUp.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -52,6 +53,7 @@ public class OnboardingScreen extends AppCompatActivity {
                 } else {
                     Intent i = new Intent(OnboardingScreen.this, StartUp.class);
                     startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
             }

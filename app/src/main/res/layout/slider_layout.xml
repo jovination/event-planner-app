@@ -35,7 +35,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textFontWeight="200"
-        android:textSize="15sp"
+        android:textSize="14sp"
         tools:ignore="UnusedAttribute" />
 
 </LinearLayout>

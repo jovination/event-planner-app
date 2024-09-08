@@ -44,6 +44,7 @@ public class StartUp extends AppCompatActivity {
                 Intent intent = new Intent(StartUp.this, SignUp.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
             }
         });
         signIn.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +53,7 @@ public class StartUp extends AppCompatActivity {
                 Intent intent = new Intent(StartUp.this, SignIn.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
             }
         });
         
