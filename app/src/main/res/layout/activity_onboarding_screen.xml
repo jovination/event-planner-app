@@ -25,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slideViewerPager"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="90dp">
 
         <TextView
             android:id="@+id/skipBtn"
@@ -42,7 +42,7 @@
 
         <LinearLayout
             android:id="@+id/indicator_layout"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="95dp"
             android:layout_marginEnd="95dp"
@@ -54,16 +54,16 @@
             android:id="@+id/nextBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="15sp"
-            android:layout_marginEnd="50dp"
-            android:layout_alignParentEnd ="true"
-            android:textFontWeight="500"
-            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="14dp"
+            android:layout_marginEnd="50dp"
+            android:fontFamily="@font/poppins_regular"
             android:text="Next"
-            tools:targetApi="p"
-            tools:ignore="HardcodedText" />
+            android:textColor="@color/black"
+            android:textFontWeight="500"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText"
+            tools:targetApi="p" />
 
     </RelativeLayout>
 
