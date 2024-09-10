@@ -78,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-           >
+            >
 
             <EditText
                 android:id="@+id/dateId"
@@ -273,7 +273,7 @@
                 android:layout_below="@id/uploadButton"
                 android:layout_marginTop="30dp"
                 android:indeterminate="true"
-              />
+                />
         </RelativeLayout>
 
 

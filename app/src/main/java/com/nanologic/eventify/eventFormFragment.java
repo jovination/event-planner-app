@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +23,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -46,11 +43,8 @@ public class eventFormFragment extends Fragment {
     private ProgressBar uploadProgressBar;
     private CardView cardUploaded;
 
-    private DatabaseReference databaseReference;
     private StorageReference storageReference;
-    private FirebaseApp firebaseApp;
     private Uri imageUri;
-    private Bitmap bitmap;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -76,8 +70,6 @@ public class eventFormFragment extends Fragment {
         uploadButton = view.findViewById(R.id.uploadButton);
         submitButton = view.findViewById(R.id.submitBtn);
 
-        firebaseApp = FirebaseApp.initializeApp(requireContext());
-        databaseReference = FirebaseDatabase.getInstance().getReference("Events");
         storageReference = FirebaseStorage.getInstance().getReference("EventImages");
 
         startTimeIcon.setOnClickListener(v -> startTimePicker());
@@ -102,7 +94,6 @@ public class eventFormFragment extends Fragment {
             datePickerDialog.show();
         });
 
-        // Set click listener on the upload button
         uploadButton.setOnClickListener(v -> openImagePicker());
 
         submitButton.setOnClickListener(v -> submitEvent());
@@ -147,65 +138,73 @@ public class eventFormFragment extends Fragment {
         }
     }
 
-    private void saveEventDetails(String eventId, @Nullable String imageUrl) {
-        String eventNameValue = eventName.getText().toString().trim();
-        String locationValue = location.getText().toString().trim();
-        String dateValue = date.getText().toString().trim();
-        String startTimeValue = startTime.getText().toString().trim();
-        String endTimeValue = endTime.getText().toString().trim();
-        String numberOfSeatsValue = numberOfSeats.getText().toString().trim();
+    private void saveEventDetails(String eventId, @Nullable Uri imageUri, Event event) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        if (eventNameValue.isEmpty() || locationValue.isEmpty() || dateValue.isEmpty() ||
-                startTimeValue.isEmpty() || endTimeValue.isEmpty() || numberOfSeatsValue.isEmpty()) {
-            Toast.makeText(getContext(), "Please fill in all the fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Event event = new Event(eventId, eventNameValue, locationValue, dateValue,
-                startTimeValue, endTimeValue, Integer.parseInt(numberOfSeatsValue), imageUrl);
-
-        databaseReference.child(eventId).setValue(event)
+        db.collection("events").document(eventId)
+                .set(event)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(getContext(), "Event saved successfully", Toast.LENGTH_SHORT).show();
-                        clearForm();
+                        if (imageUri != null) {
+                            // Upload image if present
+                            uploadImage(eventId, imageUri);
+                        } else {
+                            // No image to upload, just clear the form
+                            clearForm();
+                            Toast.makeText(getContext(), "Event saved successfully", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         Toast.makeText(getContext(), "Failed to save event", Toast.LENGTH_SHORT).show();
+                        uploadProgressBar.setVisibility(View.GONE);
+                        submitButton.setVisibility(View.VISIBLE);
                     }
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    uploadProgressBar.setVisibility(View.GONE);
+                    submitButton.setVisibility(View.VISIBLE);
                 });
     }
 
-    private void uploadImage(Uri imageUri, String eventId) {
-        if (imageUri != null) {
-            uploadProgressBar.setVisibility(View.VISIBLE);
-            submitButton.setVisibility(View.GONE);
-            StorageReference fileReference = storageReference.child("eventImages/" + eventId + ".jpg");
+    private void uploadImage(String eventId, Uri imageUri) {
+        if (imageUri == null) {
+            Toast.makeText(getContext(), "No image selected", Toast.LENGTH_SHORT).show();
+            uploadProgressBar.setVisibility(View.GONE);
+            submitButton.setVisibility(View.VISIBLE);
+            return;
+        }
 
-            fileReference.putFile(imageUri)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                            String imageUrl = uri.toString();
-                            saveEventDetails(eventId, imageUrl);
-                            uploadProgressBar.setVisibility(View.GONE);
-                            submitButton.setVisibility(View.VISIBLE);
-
-                            Toast.makeText(getContext(), "Upload complete", Toast.LENGTH_SHORT).show();
-                        });
-                    })
-                    .addOnFailureListener(e -> {
+        StorageReference imageRef = storageReference.child(eventId + ".jpg");
+        imageRef.putFile(imageUri)
+                .addOnSuccessListener(taskSnapshot -> {
+                    imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        // Update the event document with the image URL
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("events").document(eventId)
+                                .update("imageUrl", uri.toString())
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(getContext(), "Event saved successfully with image", Toast.LENGTH_SHORT).show();
+                                    uploadProgressBar.setVisibility(View.GONE);
+                                    submitButton.setVisibility(View.VISIBLE);
+                                    clearForm();
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(getContext(), "Failed to update event with image URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    uploadProgressBar.setVisibility(View.GONE);
+                                    submitButton.setVisibility(View.VISIBLE);
+                                });
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(getContext(), "Failed to get image URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         uploadProgressBar.setVisibility(View.GONE);
                         submitButton.setVisibility(View.VISIBLE);
-                        Toast.makeText(getContext(), "Failed to upload image: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                        Log.e("UploadError", "Upload failed", e);
                     });
-        } else {
-            Toast.makeText(getContext(), "No image selected", Toast.LENGTH_SHORT).show();
-        }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getContext(), "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    uploadProgressBar.setVisibility(View.GONE);
+                    submitButton.setVisibility(View.VISIBLE);
+                });
     }
-
 
     private void clearForm() {
         eventName.setText("");
@@ -220,16 +219,32 @@ public class eventFormFragment extends Fragment {
     }
 
     private void submitEvent() {
-        String eventId = databaseReference.push().getKey();
-        if (eventId != null) {
-            if (imageUri != null) {
-                uploadImage(imageUri, eventId);
-            } else {
-                saveEventDetails(eventId, null);
-            }
-        }
-    }
+        // Show progress bar and hide submit button at the beginning
+        uploadProgressBar.setVisibility(View.VISIBLE);
+        submitButton.setVisibility(View.GONE);
 
+        // Generate a unique event ID
+        String eventId = FirebaseFirestore.getInstance().collection("events").document().getId();
+        if (eventId == null) {
+            Toast.makeText(getContext(), "Error generating event ID", Toast.LENGTH_SHORT).show();
+            uploadProgressBar.setVisibility(View.GONE);
+            submitButton.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        // Create the Event object with default null image URL
+        Event event = new Event(
+                eventId,
+                eventName.getText().toString().trim(),
+                location.getText().toString().trim(),
+                date.getText().toString().trim(),
+                startTime.getText().toString().trim(),
+                endTime.getText().toString().trim(),
+                Integer.parseInt(numberOfSeats.getText().toString().trim()),
+                null // Placeholder for image URL
+        );
+         saveEventDetails(eventId, imageUri, event);
+    }
 
     private void startTimePicker() {
         FragmentManager fragmentManager = getChildFragmentManager();
@@ -273,12 +288,9 @@ public class eventFormFragment extends Fragment {
         picker.show(fragmentManager, "TIME_PICKER");
     }
 
-
-
-
     private void openImagePicker() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*"); // Only allow images
-        startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 }

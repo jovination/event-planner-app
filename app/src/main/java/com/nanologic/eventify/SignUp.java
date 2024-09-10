@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +36,7 @@ public class SignUp extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private ProgressBar progressBar;
-
+    private ImageView backBtn;
 
 
     @Override
@@ -56,6 +57,9 @@ public class SignUp extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         signUpButton = findViewById(R.id.signUpBtn);
+        //back button
+        backBtn = findViewById(R.id.backBtn);
+
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +92,16 @@ public class SignUp extends AppCompatActivity {
                 Intent intent = new Intent(SignUp.this, SignIn.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUp.this, StartUp.class);
+                startActivity(intent);
+                finish();
 
             }
         });

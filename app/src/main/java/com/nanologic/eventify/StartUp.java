@@ -38,6 +38,7 @@ public class StartUp extends AppCompatActivity {
         });
         createAcc = findViewById(R.id.createAccount);
         signIn = findViewById(R.id.signIn);
+
         createAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
