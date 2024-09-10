@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class SignIn extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextInputEditText inputEmail, inputPassword;
     private Button signInBtn;
+    private ImageView backBtn;
+
 
 
     @Override
@@ -51,6 +54,8 @@ public class SignIn extends AppCompatActivity {
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
         signInBtn = findViewById(R.id.signInBtn);
+        backBtn = findViewById(R.id.backBtn);
+
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +69,12 @@ public class SignIn extends AppCompatActivity {
                     progressBar.setVisibility(View.VISIBLE);
                     signInUser(email, password);
                 }
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignIn.this, SignUp.class);
             }
         });
     }
