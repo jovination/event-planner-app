@@ -14,14 +14,14 @@ public class Event {
     public Event() {}
 
     // Constructor with parameters
-    public Event(String eventId, String eventName, String date, String startTime, String endTime,
-                 String location, int numberOfSeats, String imageUrl) {
+    public Event(String eventId, String eventName,String location, String date, String startTime, String endTime,
+                  int numberOfSeats, String imageUrl) {
         this.eventId = eventId;
         this.eventName = eventName;
+        this.location = location;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.location = location;
         this.numberOfSeats = numberOfSeats;
         this.imageUrl = imageUrl;
     }

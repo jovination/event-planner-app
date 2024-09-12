@@ -41,7 +41,6 @@ public class DiscoveryFragment extends Fragment {
 
 
 
-        // Initialize Firebase Firestore
         db = FirebaseFirestore.getInstance();
 
         // Initialize RecyclerView and Adapter
@@ -91,10 +90,10 @@ public class DiscoveryFragment extends Fragment {
                                     Event event = new Event(
                                             document.getId(), // Use document ID as event ID
                                             eventName,
+                                            location,
                                             date,
                                             startTime,
                                             endTime,
-                                            location,
                                             seats != null ? seats.intValue() : 0, // Convert Long to int
                                             imageUrl
                                     );
