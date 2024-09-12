@@ -3,8 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DiscoveryFragment"
-    android:background="#E78F8E">
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
+    <LinearLayout
+        android:id="@+id/upcomingUiContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Discovery Events"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textFontWeight="600"
+            android:layout_marginBottom="15dp"
+            tools:ignore="HardcodedText"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:context=".DiscoveryFragment"/>
+
+    </LinearLayout>
+
 
 
 

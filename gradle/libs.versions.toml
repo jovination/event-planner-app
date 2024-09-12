@@ -2,6 +2,7 @@
 agp = "8.5.1"
 bom = "VERSION"
 cardviewVersion = "1.0.0"
+compiler = "4.11.0"
 converterGson = "2.9.0"
 coreKtx = "1.9.0"
 firebaseBomVersion = "33.2.0"
@@ -28,6 +29,7 @@ firebaseFirestore = "25.1.0"
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardviewVersion" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
 google-firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebaseStorageVersion" }

@@ -56,5 +56,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.imageslideshow)
     implementation(libs.androidx.core.ktx)
+    annotationProcessor(libs.compiler)
 
 }
