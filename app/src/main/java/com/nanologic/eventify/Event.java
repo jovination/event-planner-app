@@ -91,6 +91,7 @@ public class Event {
         this.imageUrl = imageUrl;
     }
 
+
     // Method to extract the day of the month (dateId)
     public String getDateId() {
         if (date == null || date.isEmpty()) return "";
@@ -103,5 +104,17 @@ public class Event {
         if (date == null || date.isEmpty()) return "";
         String[] dateParts = date.split(" ");
         return (dateParts.length > 0) ? dateParts[0] : "";
+    }
+
+    public boolean getName() {
+        return false;
+    }
+
+    public boolean getSeats() {
+            return false;
+    }
+
+    public boolean getImageResourceId() {
+        return false;
     }
 }

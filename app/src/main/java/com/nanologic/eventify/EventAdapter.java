@@ -1,6 +1,7 @@
 package com.nanologic.eventify;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         // Set date and month
         holder.dateId.setText(event.getDateId());
         holder.monthId.setText(event.getMonthId());
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ReserveEvent.class);
+            intent.putExtra("eventName", event.getEventName());
+            intent.putExtra("eventLocation", event.getLocation());
+            intent.putExtra("eventDate", event.getDate());
+            intent.putExtra("eventStartTime", event.getStartTime());
+            intent.putExtra("eventEndTime", event.getEndTime());
+            intent.putExtra("eventSeats", event.getNumberOfSeats());
+            intent.putExtra("eventImage", event.getImageUrl()); // Change from `event.getImageResourceId()` to `event.getImageUrl()`
+            context.startActivity(intent);
+        });
     }
 
     @Override

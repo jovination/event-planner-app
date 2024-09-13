@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
     tools:context=".ReserveEvent">
 
     <LinearLayout
@@ -22,7 +23,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="390dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -43,8 +44,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
                     app:srcCompat="@drawable/backicon"
                     />
 
@@ -53,7 +54,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="290dp"
+                android:layout_marginTop="320dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,21 +77,23 @@
                         android:text="Youth's Seminar"
                         android:fontFamily="@font/poppins_regular"
                         android:textAlignment="center"
-                        android:textSize="25sp"
-                        android:textFontWeight="600"
+                        android:textSize="20sp"
+                        android:textFontWeight="700"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"
                         tools:ignore="HardcodedText,UnusedAttribute"
                         />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="@color/black"
-                        android:layout_marginTop="16dp"/>
+                        android:layout_marginTop="20dp"/>
                     <LinearLayout
                         android:gravity="center_vertical"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp">
+                        android:layout_height="55dp">
 
                         <ImageView
                             android:layout_marginStart="30dp"
@@ -106,7 +109,8 @@
                             <LinearLayout
                                 android:orientation="horizontal"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -160,7 +164,7 @@
                                     android:layout_marginStart="10dp"
                                     tools:ignore="HardcodedText" />
                                 <TextView
-                                    android:id="@+id/EndTime"
+                                    android:id="@+id/endTime"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins_regular"
@@ -189,7 +193,7 @@
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp">
+                        android:layout_height="55dp">
                         <ImageView
                             android:layout_marginStart="30dp"
                             android:layout_width="wrap_content"
@@ -220,7 +224,7 @@
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp">
+                        android:layout_height="55dp">
                         <ImageView
                             android:layout_marginStart="30dp"
                             android:layout_width="wrap_content"
