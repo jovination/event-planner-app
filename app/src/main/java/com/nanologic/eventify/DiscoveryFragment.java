@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,24 +28,20 @@ public class DiscoveryFragment extends Fragment {
     private FirebaseFirestore db;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
+    private ProgressBar progressBar;
+    private RecyclerView recyclerView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_discovery, container, false);
 
-
-
-
-
-
-
-
-
         db = FirebaseFirestore.getInstance();
 
-        // Initialize RecyclerView and Adapter
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+
+        progressBar = view.findViewById(R.id.progressBar);
+        recyclerView = view.findViewById(R.id.recyclerView);
         eventList = new ArrayList<>();
         eventAdapter = new EventAdapter(getContext(), eventList);
         recyclerView.setAdapter(eventAdapter);
@@ -68,11 +65,15 @@ public class DiscoveryFragment extends Fragment {
     }
 
     private void fetchEventData() {
+        progressBar.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
         db.collection("events")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                         if (task.isSuccessful()) {
                             eventList.clear(); // Clear the existing list
                             for (QueryDocumentSnapshot document : task.getResult()) {
