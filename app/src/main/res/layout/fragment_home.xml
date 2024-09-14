@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/home_fragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,7 +30,7 @@
                 android:background="@drawable/image_slider"
                 app:iss_period="3000"
                 app:iss_error_image="@color/grey"
-                app:iss_corner_radius="55"
+                app:iss_corner_radius="60"
                 />
 
             <TextView
@@ -76,7 +77,7 @@
                     android:id="@+id/card_upcoming"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
-                    app:cardCornerRadius="15dp"
+                    app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
                     <RelativeLayout
@@ -102,7 +103,7 @@
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_alignParentEnd="true"
-                            android:layout_margin="8dp"
+                            android:layout_margin="12dp"
                             android:layout_alignTop="@id/image_upcoming"/>
                     </RelativeLayout>
 
@@ -135,7 +136,7 @@
                         android:id="@+id/card_ongoing"
                         android:layout_width="match_parent"
                         android:layout_height="140dp"
-                        app:cardCornerRadius="15dp"
+                        app:cardCornerRadius="20dp"
                         app:cardElevation="4dp">
 
                         <RelativeLayout
@@ -162,7 +163,7 @@
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:layout_alignParentEnd="true"
-                                android:layout_margin="8dp"
+                                android:layout_margin="12dp"
                                 android:layout_alignTop="@id/image_ongoing"/>
                         </RelativeLayout>
 
@@ -194,7 +195,7 @@
                         android:id="@+id/card_reserved"
                         android:layout_width="match_parent"
                         android:layout_height="140dp"
-                        app:cardCornerRadius="15dp"
+                        app:cardCornerRadius="20dp"
                         app:cardElevation="4dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -220,7 +221,7 @@
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:layout_alignParentEnd="true"
-                                android:layout_margin="8dp"
+                                android:layout_margin="12dp"
                                 android:layout_alignTop="@id/image_reserved"/>
                         </RelativeLayout>
 
@@ -251,7 +252,7 @@
                         android:id="@+id/card_created"
                         android:layout_width="match_parent"
                         android:layout_height="140dp"
-                        app:cardCornerRadius="15dp"
+                        app:cardCornerRadius="20dp"
                         app:cardElevation="4dp">
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -277,7 +278,7 @@
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:layout_alignParentEnd="true"
-                                android:layout_margin="8dp"
+                                android:layout_margin="12dp"
                                 android:layout_alignTop="@id/image_created"
                                 tools:ignore="HardcodedText" />
                         </RelativeLayout>
@@ -320,9 +321,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:textFontWeight="700"
                         android:text="Create New event"
                         android:textSize="16sp"
+                        android:textFontWeight="700"
                         android:textColor="@color/black"
                         tools:ignore="HardcodedText" />
                     <TextView

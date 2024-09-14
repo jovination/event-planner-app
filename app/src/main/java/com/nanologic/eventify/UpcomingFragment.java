@@ -29,7 +29,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class UpcomingFragment extends Fragment {
-
+    private static final String TAG = "UpcomingFragment";
     private FirebaseFirestore db;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
@@ -120,20 +120,20 @@ public class UpcomingFragment extends Fragment {
                                 }
                             }
 
-                            // Sort the filtered list by date and time (earliest first)
                             filteredList.sort(Comparator.comparing(e -> {
                                 LocalDate eventDate = LocalDate.parse(e.getDate(), dateFormat);
                                 LocalTime eventStartTime = LocalTime.parse(e.getStartTime(), timeFormat);
                                 return eventDate.atTime(eventStartTime);
                             }));
 
-                            eventList.addAll(filteredList); // Add filtered and sorted events to the main list
-                            eventAdapter.notifyDataSetChanged(); // Notify adapter of data change
+                            eventList.addAll(filteredList);
+                            eventAdapter.notifyDataSetChanged();
                         } else {
                             // Handle errors
-                            Log.e("FirestoreError", "Error fetching events: ", task.getException());
+                            Log.e(TAG, "Error fetching events: ", task.getException());
                         }
                     }
                 });
     }
 }
+

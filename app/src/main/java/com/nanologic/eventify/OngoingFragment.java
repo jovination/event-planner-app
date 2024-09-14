@@ -20,18 +20,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class OngoingFragment extends Fragment {
 
-    private static final String TAG = "OngoingFragment";
     private FirebaseFirestore db;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
@@ -49,16 +44,10 @@ public class OngoingFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         eventList = new ArrayList<>();
         eventAdapter = new EventAdapter(getContext(), eventList);
-
-        // Setup RecyclerView LayoutManager and Adapter
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(eventAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Add bottom spacing decoration
-        int bottomSpacingInPixels = (int) getResources().getDimension(R.dimen.bottom_spacing);
-        recyclerView.addItemDecoration(new BottomSpacingItemDecoration(bottomSpacingInPixels));
-
-        // Fetch and filter data from Firestore
+        // Fetch and filter ongoing events
         fetchOngoingEventData();
 
         return view;
@@ -67,7 +56,6 @@ public class OngoingFragment extends Fragment {
     private void fetchOngoingEventData() {
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
-
         db.collection("events")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -76,67 +64,48 @@ public class OngoingFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
-
                         if (task.isSuccessful()) {
                             eventList.clear(); // Clear the existing list
-                            List<Event> filteredList = new ArrayList<>();
-                            SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("MMMM d, yyyy HH:mm", Locale.getDefault());
-
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
                                     // Get event data
                                     String eventName = document.getString("eventName");
                                     String location = document.getString("location");
                                     String date = document.getString("date");
-                                    Long seats = document.getLong("numberOfSeats");
+                                    Long seats = document.getLong("numberOfSeats"); // Assuming numberOfSeats is stored as a Long
                                     String startTime = document.getString("startTime");
                                     String endTime = document.getString("endTime");
                                     String imageUrl = document.getString("imageUrl");
 
-                                    // Combine date and time
-                                    String startDateTimeString = date + " " + startTime;
-                                    String endDateTimeString = date + " " + endTime;
+                                    // Parse event times
+                                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm");
+                                    LocalDateTime startDateTime = LocalDateTime.parse(date + " " + startTime, dateTimeFormatter);
+                                    LocalDateTime endDateTime = LocalDateTime.parse(date + " " + endTime, dateTimeFormatter);
+                                    LocalDateTime now = LocalDateTime.now();
 
-                                    // Convert to Date objects
-                                    Date startDateTime = dateTimeFormatter.parse(startDateTimeString);
-                                    Date endDateTime = dateTimeFormatter.parse(endDateTimeString);
-                                    Date now = new Date(); // Current time
-
-                                    // Filter: Include only ongoing events
-                                    if (startDateTime != null && endDateTime != null && now.after(startDateTime) && now.before(endDateTime)) {
+                                    // Filter for ongoing events (events that started but haven't ended yet)
+                                    if (now.isAfter(startDateTime) && now.isBefore(endDateTime)) {
+                                        // Create Event object and add to list if ongoing
                                         Event event = new Event(
-                                                document.getId(),
+                                                document.getId(), // Use document ID as event ID
                                                 eventName,
                                                 location,
                                                 date,
                                                 startTime,
                                                 endTime,
-                                                seats != null ? seats.intValue() : 0,
+                                                seats != null ? seats.intValue() : 0, // Convert Long to int
                                                 imageUrl
                                         );
-                                        filteredList.add(event);
+                                        eventList.add(event);
                                     }
-
-                                } catch (ParseException e) {
-                                    Log.e(TAG, "Error parsing date/time: ", e);
+                                } catch (Exception e) {
+                                    Log.e("DateTimeParseError", "Error parsing event times: ", e);
                                 }
                             }
-
-                            // Optionally sort the filtered list if needed
-                            filteredList.sort(Comparator.comparing(e -> {
-                                try {
-                                    return dateTimeFormatter.parse(e.getDate() + " " + e.getStartTime());
-                                } catch (ParseException ex) {
-                                    Log.e(TAG, "Error sorting events: ", ex);
-                                    return new Date();
-                                }
-                            }));
-
-                            eventList.addAll(filteredList); // Add filtered events to the main list
                             eventAdapter.notifyDataSetChanged(); // Notify adapter of data change
                         } else {
                             // Handle errors
-                            Log.e(TAG, "Error fetching events: ", task.getException());
+                            Log.e("FirestoreError", "Error fetching events: ", task.getException());
                         }
                     }
                 });

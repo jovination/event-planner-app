@@ -40,8 +40,8 @@
 
                 <ImageView
                     android:id="@+id/backICon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginStart="30dp"
@@ -79,7 +79,7 @@
                         android:textAlignment="center"
                         android:textSize="20sp"
                         android:textFontWeight="700"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:textColor="@color/black"
                         tools:ignore="HardcodedText,UnusedAttribute"
                         />
@@ -90,7 +90,7 @@
                         android:layout_marginTop="20dp"/>
                     <LinearLayout
                         android:gravity="center_vertical"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="15dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="55dp">
@@ -186,11 +186,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="@color/black"
-                        android:layout_marginTop="16dp"/>
+                        android:layout_marginTop="15dp"/>
 
                     <LinearLayout
                         android:gravity="center_vertical"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="15dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="55dp">
@@ -218,7 +218,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="@color/black"
-                        android:layout_marginTop="16dp"/>
+                        android:layout_marginTop="15dp"/>
                     <LinearLayout
                         android:gravity="center_vertical"
                         android:layout_marginTop="16dp"
