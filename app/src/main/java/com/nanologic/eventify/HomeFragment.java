@@ -15,47 +15,41 @@ import android.widget.ImageView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        CardView cardUpcoming = view.findViewById(R.id.card_upcoming);
-        cardUpcoming.setOnClickListener(v -> {
-            // Replace fragment within the shared FrameLayout
-            replaceFragment(new UpcomingFragment());
-        });
+        setupCardClickListeners(view);  // Setup click listeners for the cards
+        setupImageSlider(view);         // Setup the image slider
 
-        CardView cardOngoing = view.findViewById(R.id.card_ongoing);
-        cardOngoing.setOnClickListener(v -> {
-            // Replace fragment within the shared FrameLayout
-            replaceFragment(new OngoingFragment());
-        });
+        return view;
+    }
 
-        CardView cardReserved = view.findViewById(R.id.card_reserved);
-        cardReserved.setOnClickListener(v -> {
-            // Replace fragment within the shared FrameLayout
-            replaceFragment(new ReservedFragment());
-        });
-        CardView cardCreated = view.findViewById(R.id.card_created);
-        cardCreated.setOnClickListener(v -> {
-            // Replace fragment within the shared FrameLayout
-            replaceFragment(new CreatedFragment());
-        });
+    // Method to initialize and set click listeners for CardViews
+    private void setupCardClickListeners(View view) {
+        setupCardClickListener(view, R.id.card_upcoming, new UpcomingFragment());
+        setupCardClickListener(view, R.id.card_ongoing, new OngoingFragment());
+        setupCardClickListener(view, R.id.card_reserved, new ReservedFragment());
+        setupCardClickListener(view, R.id.card_created, new CreatedFragment());
 
         ImageView eventForm = view.findViewById(R.id.addEvent);
-        eventForm.setOnClickListener(v ->{
-            // Replace fragment within the shared FrameLayout
-            replaceFragment(new eventFormFragment());
-        });
+        eventForm.setOnClickListener(v -> replaceFragment(new eventFormFragment()));
+    }
 
+    // Method to reduce redundancy for setting up click listeners for each card
+    private void setupCardClickListener(View view, int cardViewId, Fragment fragment) {
+        CardView cardView = view.findViewById(cardViewId);
+        cardView.setOnClickListener(v -> replaceFragment(fragment));
+    }
+
+    // Method to initialize the ImageSlider
+    private void setupImageSlider(View view) {
         ImageSlider imageSlider = view.findViewById(R.id.slider);
         List<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.event0, ScaleTypes.CENTER_CROP));
@@ -64,18 +58,20 @@ public class HomeFragment extends Fragment {
         slideModels.add(new SlideModel(R.drawable.event3, ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels);
-
-        return view;
     }
+
+    // Method to handle fragment replacement and avoid loading the same fragment multiple times
     private void replaceFragment(Fragment fragment) {
-        if (getActivity() != null) {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        String fragmentTag = fragment.getClass().getSimpleName();
+
+        Fragment currentFragment = fragmentManager.findFragmentByTag(fragmentTag);
+        if (currentFragment == null || !currentFragment.isVisible()) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frame_layout, fragment);
-            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.frame_layout, fragment, fragmentTag);
+            fragmentTransaction.addToBackStack(fragmentTag);
             fragmentTransaction.commit();
         }
-
     }
 
 }
