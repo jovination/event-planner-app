@@ -1,10 +1,13 @@
 package com.nanologic.eventify;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -26,15 +29,15 @@ import java.util.List;
 public class DiscoveryFragment extends Fragment {
 
     private FirebaseFirestore db;
-    private EventAdapter eventAdapter;
+    private DiscoveryEventAdapter eventAdapter;
     private List<Event> eventList;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
+    private EditText searchView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_discovery, container, false);
 
         db = FirebaseFirestore.getInstance();
@@ -43,7 +46,7 @@ public class DiscoveryFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
         recyclerView = view.findViewById(R.id.recyclerView);
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(getContext(), eventList);
+        eventAdapter = new DiscoveryEventAdapter(getContext(), eventList);
         recyclerView.setAdapter(eventAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -52,13 +55,28 @@ public class DiscoveryFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         recyclerView.setAdapter(eventAdapter);
+        searchView =view.findViewById(R.id.searchView);
 
         int bottomSpacingInPixels = (int) getResources().getDimension(R.dimen.bottom_spacing);
         recyclerView.addItemDecoration(new BottomSpacingItemDecoration(bottomSpacingInPixels));
 
 
-        // Fetch data from Firestore
         fetchEventData();
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                eventAdapter.getFilter().filter(s); // Trigger filtering in the adapter
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
 
 
         return view;
@@ -75,39 +93,26 @@ public class DiscoveryFragment extends Fragment {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                         if (task.isSuccessful()) {
-                            eventList.clear(); // Clear the existing list
+                            List<Event> events = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                try {
-                                    // Get event data
-                                    String eventName = document.getString("eventName");
-                                    String location = document.getString("location");
-                                    String date = document.getString("date");
-                                    Long seats = document.getLong("numberOfSeats"); // Assuming numberOfSeats is stored as a Long
-                                    String startTime = document.getString("startTime");
-                                    String endTime = document.getString("endTime");
-                                    String imageUrl = document.getString("imageUrl");
-
-                                    // Create Event object and add to list
-                                    Event event = new Event(
-                                            document.getId(), // Use document ID as event ID
-                                            eventName,
-                                            location,
-                                            date,
-                                            startTime,
-                                            endTime,
-                                            seats != null ? seats.intValue() : 0, // Convert Long to int
-                                            imageUrl
-                                    );
-                                    eventList.add(event);
-
-                                } catch (Exception e) {
-                                    e.printStackTrace(); // Handle potential errors
-                                }
+                                // Parse event data
+                                Event event = new Event(
+                                        document.getId(),
+                                        document.getString("eventName"),
+                                        document.getString("location"),
+                                        document.getString("date"),
+                                        document.getString("startTime"),
+                                        document.getString("endTime"),
+                                        document.getLong("numberOfSeats").intValue(),
+                                        document.getString("imageUrl")
+                                );
+                                events.add(event);
                             }
-                            eventAdapter.notifyDataSetChanged(); // Notify adapter of data change
+                            eventAdapter.updateEvents(events); // Update the adapter with new events
                         } else {
-                            // Handle errors
-                            Log.e("FirestoreError", "Error fetching events: ", task.getException());
+                            Log.e("FirestoreError",
+                                    "Error fetching events: ",
+                                    task.getException());
                         }
                     }
                 });
