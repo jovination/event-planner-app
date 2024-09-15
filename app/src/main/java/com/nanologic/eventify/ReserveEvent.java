@@ -1,5 +1,6 @@
 package com.nanologic.eventify;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +20,10 @@ import com.bumptech.glide.Glide;
 public class ReserveEvent extends AppCompatActivity {
 
     private ImageView eventImage, backIcon;
-    private TextView eventName, location, startTime, endTime;
+    private TextView eventName, location, startTime, endTime, startDate, endDate, numberOfSeats;
     private Button reserveBtn;
 
+    @SuppressLint({"SetTextI18n", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,19 +44,30 @@ public class ReserveEvent extends AppCompatActivity {
         endTime = findViewById(R.id.endTime);
         reserveBtn = findViewById(R.id.reserveBtn);
         backIcon = findViewById(R.id.backICon);
+        startDate = findViewById(R.id.startDateTextView);
+        endDate = findViewById(R.id.endDateTextView);
+        numberOfSeats = findViewById(R.id.numberOfSeats);
 
         // Get data from the Intent
         String eventNameStr = getIntent().getStringExtra("eventName");
         String locationStr = getIntent().getStringExtra("eventLocation");
         String startTimeStr = getIntent().getStringExtra("eventStartTime");
         String endTimeStr = getIntent().getStringExtra("eventEndTime");
-        String imageUrl = getIntent().getStringExtra("eventImage"); // Changed to String for URL
+        String imageUrl = getIntent().getStringExtra("eventImage");
+        String startDateStr = getIntent().getStringExtra("eventDate");
+        String endDateStr = getIntent().getStringExtra("eventDate");
+        int numberOfSeatsValue = getIntent().getIntExtra("eventSeats", -1);
 
         // Set the data to the views
         eventName.setText(eventNameStr);
         location.setText(locationStr);
-        startTime.setText(startTimeStr);
-        endTime.setText(endTimeStr);
+        startTime.setText(" @ " + startTimeStr);
+        endTime.setText(" @ " + endTimeStr);
+        startDate.setText(startDateStr);
+        endDate.setText(endDateStr);
+        numberOfSeats.setText(numberOfSeatsValue != -1 ? String.valueOf(numberOfSeatsValue) : "N/A");
+
+
 
         // Use Glide to load the image from URL
         Glide.with(this)
@@ -63,5 +76,13 @@ public class ReserveEvent extends AppCompatActivity {
 
         // Set a click listener on the back icon
         backIcon.setOnClickListener(v -> onBackPressed());
+    }
+
+    public TextView getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(TextView numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
     }
 }

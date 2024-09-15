@@ -121,6 +121,7 @@
                                     android:textColor="@color/black"
                                     tools:ignore="HardcodedText,UnusedAttribute" />
                                 <TextView
+                                    android:id="@+id/startDateTextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="19 Nov, 2024"
@@ -155,6 +156,7 @@
                                     android:textColor="@color/black"
                                     tools:ignore="HardcodedText,UnusedAttribute" />
                                 <TextView
+                                    android:id="@+id/endDateTextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="19 Nov, 2024"
@@ -248,6 +250,7 @@
                             android:textSize="15sp"
                             />
                             <TextView
+                                android:id="@+id/numberOfSeats"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_regular"
