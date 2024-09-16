@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Eventify</string>
+    <string name="app_name" translatable="false">TukioHub</string>
     <string name="password" translatable="false">Password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="titleDescription1" translatable="false">
