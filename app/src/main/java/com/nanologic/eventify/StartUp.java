@@ -24,7 +24,7 @@ public class StartUp extends AppCompatActivity {
 
     TextView createAcc;
     Button signIn;
-    
+
 
 
     @Override

@@ -7,8 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartUp"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/mainLinearLayout"
@@ -29,7 +28,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:gravity="center">
-        
+
         <ImageView
             android:id="@+id/illustration"
             android:layout_width="320dp"
@@ -37,7 +36,7 @@
             android:src="@drawable/illustration" />
 
 
-        
+
      </LinearLayout>
 
         <LinearLayout
@@ -94,5 +93,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
